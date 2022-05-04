@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from receipts.models import Receipt, Account
+from receipts.models import Receipt, Account, Category
 
 # Create your views here.
 class ReceiptListView(ListView):
@@ -17,7 +19,22 @@ class ReceiptListView(ListView):
 class AccountListView(LoginRequiredMixin, ListView):
   model = Account
   template_name = "receipts/accounts.html"
-  context_object_name = "accountlists"
+  context_object_name = "accountslist"
 
   # def get_queryset(self):
   #   return Account.objects.filter(owner=self.request.user)
+
+class CategoryListView(LoginRequiredMixin, ListView):
+  model = Category
+  template_name = "receipts/categories.html"
+  context_object_name = "categorieslist"
+
+  # def get_queryset(self):
+  #   return Account.objects.filter(owner=self.request.user)
+
+
+class ReceiptCreateView(LoginRequiredMixin, CreateView):
+  model = Receipt
+  template_name = "receipts/create.html"
+  fields = ["vendor", "total", "tax", "date", "category", "account"]
+  success_url = reverse_lazy("receipts_list")
