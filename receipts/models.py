@@ -15,3 +15,18 @@ class Receipt(models.Model):
 
   def __str__(self):
     return str(self.vendor) + " - " + str(self.date)
+
+class Account(models.Model):
+  name = models.CharField(max_length=100)
+  number = models.PositiveSmallIntegerField()
+  owner = models.ForeignKey(USER_MODEL,related_name="accounts", on_delete=models.CASCADE)
+
+  def __str__(self):
+    return str(self.name)
+
+class Category(models.Model):
+  name = models.CharField(max_length=100)
+  owner = models.ForeignKey(USER_MODEL,related_name="categories", on_delete=models.CASCADE)
+
+  def __str__(self):
+    return str(self.name)
