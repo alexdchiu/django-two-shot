@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-4+13k6@heub*_*k%8fyy%qhxt6zj302p39z50m3=n+dt*%&3e)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+]
 
+LOGIN_REDIRECT_URL = "receipts_list"
+LOGOUT_REDIRECT_URL = "login"
 
 # Application definition
 
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "accounts",
 ]
 
 MIDDLEWARE = [
