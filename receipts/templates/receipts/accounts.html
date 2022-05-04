@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <div>
+    <h1>Accounts</h1>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Number of receipts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% comment %}
+        <td>{{receipt.vendor }}</td>
+        <td>{{receipt.total }}</td>
+        <td>{{receipt.tax }}</td>
+        {% endcomment %}
+      </tr>
+    </tbody>
+  </table>
+</main>
+{% endblock content %}
