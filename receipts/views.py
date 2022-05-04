@@ -44,3 +44,9 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
   template_name = "receipts/accounts/create.html"
   fields = ["name", "number"]
   success_url = reverse_lazy("accounts_list")
+
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+  model = Category
+  template_name = "receipts/categories/create.html"
+  fields = ["name"]
+  success_url = reverse_lazy("categories_list")
