@@ -11,14 +11,14 @@ table {
 }
 
 th {
-  border: 1px solid teal;
+  border: 1px solid cadetblue;
   padding: 0.5em;
   text-align: center;
   background-color: lightgrey;
 }
 
 td {
-  border: 1px solid teal;
+  border: 1px solid cadetblue;
   padding: 0.5em;
   text-align: center;
 }

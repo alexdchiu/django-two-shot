@@ -13,7 +13,7 @@
     <tbody>
       {% for category in categorieslist %}
       <tr>
-        <td>{{ category.name }}</td>
+        <td>{{ category.name|upper }}</td>
         <td>{{ category.receipts.all|length }}</td>
       </tr>
       {% endfor %}

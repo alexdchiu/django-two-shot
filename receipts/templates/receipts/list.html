@@ -17,12 +17,12 @@
     <tbody>
       {% for receipt in receiptslist %}
       <tr>
-        <td>{{receipt.vendor }}</td>
-        <td>${{receipt.total|floatformat:2|intcomma }}</td>
+        <td>{{receipt.vendor|upper }}</td>
+        <td>$ {{receipt.total|floatformat:2|intcomma }}</td>
         <td>{{receipt.tax }}</td>
-        <td>{{receipt.date }}</td>
-        <td>{{receipt.category }}</td>
-        <td>{{receipt.account }}</td>
+        <td>{{receipt.date|date:"m/d/Y" }}</td>
+        <td>{{receipt.category|upper }}</td>
+        <td>{{receipt.account|upper }}</td>
       </tr>
       {% endfor %}
     </tbody>
