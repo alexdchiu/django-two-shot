@@ -1,7 +1,9 @@
 {% extends 'noaccess.html' %} {% block content %}
 <h1>Sign Up</h1>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="form-div">
+  <form method="post" class="narrow-form">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
 {% endblock content %}

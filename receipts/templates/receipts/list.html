@@ -18,7 +18,7 @@
       {% for receipt in receiptslist %}
       <tr>
         <td>{{receipt.vendor }}</td>
-        <td>{{receipt.total }}</td>
+        <td>{{receipt.total|prepend_dollars }}</td>
         <td>{{receipt.tax }}</td>
         <td>{{receipt.date }}</td>
         <td>{{receipt.category }}</td>
