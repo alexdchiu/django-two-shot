@@ -19,8 +19,8 @@ from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('receipts/', include('receipts.urls')),
+    path("admin/", admin.site.urls),
+    path("receipts/", include("receipts.urls")),
     path(
         "",
         RedirectView.as_view(url=reverse_lazy("receipts_list")),
@@ -28,5 +28,11 @@ urlpatterns = [
     ),
     path("accounts/", include("accounts.urls")),
     path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
-    path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path(
+        "accounts/logout/",
+        auth_views.LogoutView.as_view(
+            template_name="registration/logged_out.html"
+        ),
+        name="logout",
+    ),
 ]
