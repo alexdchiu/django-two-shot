@@ -11,7 +11,7 @@ class Receipt(models.Model):
   date = models.DateField()
   category = models.ForeignKey("Category",related_name="receipts", on_delete=models.CASCADE)
   account = models.ForeignKey("Account", related_name="receipts", on_delete=models.CASCADE, null = True)
-  owner = models.ForeignKey(USER_MODEL,related_name="receipts", on_delete=models.CASCADE)
+  purchaser = models.ForeignKey(USER_MODEL,related_name="receipts", on_delete=models.CASCADE)
 
   def __str__(self):
     return str(self.vendor) + " - " + str(self.date)

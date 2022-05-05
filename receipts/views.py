@@ -40,7 +40,7 @@ class ReceiptCreateView(LoginRequiredMixin, CreateView):
   success_url = reverse_lazy("receipts_list")
 
   def form_valid(self, form):
-    form.instance.owner = self.request.user
+    form.instance.purchaser = self.request.user
     return super().form_valid(form)
 
 class AccountCreateView(LoginRequiredMixin, CreateView):
