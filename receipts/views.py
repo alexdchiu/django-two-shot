@@ -13,7 +13,7 @@ class ReceiptListView(ListView):
   context_object_name = "receiptslist"
 
   def get_queryset(self):
-    return Receipt.objects.filter(owner=self.request.user)
+    return Receipt.objects.filter(purchaser=self.request.user)
 
 
 class AccountListView(LoginRequiredMixin, ListView):
