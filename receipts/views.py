@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from receipts.models import Receipt, Account, Category
 
 # Create your views here.
-class ReceiptListView(ListView):
+class ReceiptListView(LoginRequiredMixin, ListView):
   model = Receipt
   template_name = "receipts/list.html"
   context_object_name = "receiptslist"
