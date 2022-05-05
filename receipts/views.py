@@ -12,8 +12,8 @@ class ReceiptListView(ListView):
   template_name = "receipts/list.html"
   context_object_name = "receiptslist"
 
-  # def get_queryset(self):
-  #   return Receipt.objects.filter(owner=self.request.user)
+  def get_queryset(self):
+    return Receipt.objects.filter(owner=self.request.user)
 
 
 class AccountListView(LoginRequiredMixin, ListView):
@@ -21,16 +21,16 @@ class AccountListView(LoginRequiredMixin, ListView):
   template_name = "receipts/accounts.html"
   context_object_name = "accountslist"
 
-  # def get_queryset(self):
-  #   return Account.objects.filter(owner=self.request.user)
+  def get_queryset(self):
+    return Account.objects.filter(owner=self.request.user)
 
 class CategoryListView(LoginRequiredMixin, ListView):
   model = Category
   template_name = "receipts/categories.html"
   context_object_name = "categorieslist"
 
-  # def get_queryset(self):
-  #   return Account.objects.filter(owner=self.request.user)
+  def get_queryset(self):
+    return Category.objects.filter(owner=self.request.user)
 
 
 class ReceiptCreateView(LoginRequiredMixin, CreateView):
@@ -39,14 +39,26 @@ class ReceiptCreateView(LoginRequiredMixin, CreateView):
   fields = ["vendor", "total", "tax", "date", "category", "account"]
   success_url = reverse_lazy("receipts_list")
 
+  def form_valid(self, form):
+    form.instance.owner = self.request.user
+    return super().form_valid(form)
+
 class AccountCreateView(LoginRequiredMixin, CreateView):
   model = Account
   template_name = "receipts/accounts/create.html"
   fields = ["name", "number"]
   success_url = reverse_lazy("accounts_list")
 
+  def form_valid(self, form):
+    form.instance.owner = self.request.user
+    return super().form_valid(form)
+
 class CategoryCreateView(LoginRequiredMixin, CreateView):
   model = Category
   template_name = "receipts/categories/create.html"
   fields = ["name"]
   success_url = reverse_lazy("categories_list")
+
+  def form_valid(self, form):
+    form.instance.owner = self.request.user
+    return super().form_valid(form)

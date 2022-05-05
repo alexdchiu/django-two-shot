@@ -16,7 +16,7 @@
       <tr>
         <td>{{ account.name }}</td>
         <td>{{ account.number }}</td>
-        <td>user.accountslist.all?</td>
+        <td>{{ account.receipts.all|length }}</td>
       </tr>
       {% endfor %}
     </tbody>

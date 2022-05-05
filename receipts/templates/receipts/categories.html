@@ -14,7 +14,7 @@
       {% for category in categorieslist %}
       <tr>
         <td>{{ category.name }}</td>
-        <td>user.categorieslist.all?</td>
+        <td>{{ category.receipts.all|length }}</td>
       </tr>
       {% endfor %}
     </tbody>
