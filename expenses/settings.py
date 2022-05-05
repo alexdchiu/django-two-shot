@@ -39,6 +39,7 @@ LOGIN_REDIRECT_URL = "receipts_list"
 INSTALLED_APPS = [
     "receipts.apps.ReceiptsConfig",
     "accounts.apps.AccountsConfig",
+    "django.contrib.humanize",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load humanize %}
 <main>
   <div>
     <h1>Receipts</h1>
@@ -18,7 +18,7 @@
       {% for receipt in receiptslist %}
       <tr>
         <td>{{receipt.vendor }}</td>
-        <td>{{receipt.total|prepend_dollars }}</td>
+        <td>${{receipt.total|floatformat:2|intcomma }}</td>
         <td>{{receipt.tax }}</td>
         <td>{{receipt.date }}</td>
         <td>{{receipt.category }}</td>
